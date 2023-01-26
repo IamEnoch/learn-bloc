@@ -1,42 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-//Define the states
-@immutable
-abstract class CounterState {
-  final int value;
-
-  const CounterState(this.value);
-}
-
-class CounterStateInvalidNumber extends CounterState {
-  final String invalidValue;
-
-  const CounterStateInvalidNumber({
-    required this.invalidValue,
-    required int previousValue,
-  }) : super(previousValue);
-}
-
-class CounterStateValidNumber extends CounterState {
-  const CounterStateValidNumber(int value) : super(value);
-}
-
-//Define the events
-@immutable
-abstract class CounterEvent {
-  final String value;
-
-  const CounterEvent(this.value);
-}
-
-class IncrementEvent extends CounterEvent {
-  const IncrementEvent(String value) : super(value);
-}
-
-class DecrementEvent extends CounterEvent {
-  const DecrementEvent(String value) : super(value);
-}
+import 'package:my_bloc_project/bloc/counter_event.dart';
+import 'package:my_bloc_project/bloc/counter_state.dart';
 
 //create your bloc
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
